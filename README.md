@@ -1,24 +1,28 @@
-# AURA — AI Voice Interview Coach
+# Aura
 
-You practice. You get grilled. You land the role.
-
-Aura is a full-stack AI-powered interview prep platform. Upload your resume, paste a job description, and get a personalized mock interview with real-time voice interaction, instant AI scoring, and brutal resume interrogation mode.
+AI-powered voice interview coach. Upload your resume, pick a role, and get grilled by an AI that actually knows what it's doing.
 
 ---
 
-## what it does
+## What it does
 
-- **Mock Interviews** — AI generates questions tailored to your resume + the specific job description. You answer out loud, it transcribes and scores you.
-- **Resume Grill** — It reads everything on your resume and asks you to defend it. Every project, every skill, every claim.
-- **Company Prep** — Questions built around the culture and interview style of the specific company you are targeting.
-- **STAR Method Coaching** — Structured feedback on your behavioral answers using the Situation-Task-Action-Result framework.
-- **Voice Interaction** — ElevenLabs TTS reads questions aloud. Groq Whisper transcribes your answers in real time.
-- **AI Scoring** — Gemini evaluates every answer on clarity, depth, and confidence. Gives you a score, strengths, and specific gaps.
-- **Progress Tracking** — Analytics dashboard showing your improvement across sessions.
+**Mock Interviews** — Generates questions from your resume and the job description. You answer out loud, it transcribes and scores you.
+
+**Resume Grill** — Reads everything on your resume and interrogates you on it. Every project, every skill, every claim.
+
+**Company Prep** — Questions built around the culture and interview style of the specific company you are targeting.
+
+**STAR Method Coaching** — Structured feedback on behavioral answers using the Situation Task Action Result framework.
+
+**Voice Interaction** — ElevenLabs reads questions aloud. Groq Whisper transcribes your answers in real time.
+
+**AI Scoring** — Gemini evaluates every answer on clarity, depth, and confidence. Gives you a score, strengths, and gaps.
+
+**Progress Tracking** — Dashboard showing your improvement across sessions.
 
 ---
 
-## tech stack
+## Stack
 
 **Frontend**
 - Next.js 15 (App Router)
@@ -31,21 +35,21 @@ Aura is a full-stack AI-powered interview prep platform. Upload your resume, pas
 - Python / FastAPI
 - PostgreSQL via Supabase
 - SQLAlchemy + Alembic
-- Redis (Upstash) for rate limiting and sessions
+- Redis via Upstash
 - Clerk (auth verification)
 
 **AI / Voice**
-- Google Gemini — resume parsing, question generation, answer evaluation
-- Groq Whisper — speech to text
-- OpenAI TTS — text to speech (fallback)
-- ElevenLabs — primary voice output
+- Google Gemini - resume parsing, question generation, answer evaluation
+- Groq Whisper - speech to text
+- ElevenLabs - voice output
+- OpenAI TTS - fallback voice
 
 **Storage**
-- Supabase Storage (resume PDFs)
+- Supabase Storage for resume PDFs
 
 ---
 
-## running locally
+## Running locally
 
 **Backend**
 
@@ -81,21 +85,22 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
 
 ---
 
-## deployment
+## Deployment
 
-- **Frontend** → Vercel (connect the `frontend/` folder)
-- **Backend** → Render (Python detected automatically via `Procfile`)
-
-Set all env vars in both platforms. Point `NEXT_PUBLIC_API_URL` to your Render backend URL.
+- Frontend on Vercel, connect the `frontend/` folder
+- Backend on Render, Python detected automatically via `Procfile`
+- Set all env vars on both platforms
+- Point `NEXT_PUBLIC_API_URL` to your Render backend URL
+- Clerk production instance requires a custom domain
 
 ---
 
-## pricing model
+## Pricing model
 
 Free tier gets 2 lifetime interviews, up to 5 questions each. Pro unlocks unlimited interviews, up to 15 questions, Resume Grill, Company Prep, and ideal answer examples. Payments via Stripe.
 
 ---
 
-## license
+## License
 
 MIT

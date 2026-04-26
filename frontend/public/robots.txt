@@ -1,0 +1,21 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow dashboard and user-specific pages
+Disallow: /dashboard
+Disallow: /interviews/*/live
+Disallow: /interviews/*/results
+Disallow: /sign-in
+Disallow: /sign-up
+Disallow: /api/
+
+# Allow public pages
+Allow: /
+Allow: /interviews/new
+Allow: /interviews/resume-grill
+Allow: /interviews/company-prep
+Allow: /guides
+
+# Sitemap location
+Sitemap: https://reherse.dev/sitemap.xml

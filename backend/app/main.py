@@ -32,6 +32,15 @@ fastapi_app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handle
 # Keep reference to FastAPI app for testing
 app = fastapi_app
 
+# Configure CORS first — must be before all other middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.cors_origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # Wrap with SocketIO
 socket_app = socketio.ASGIApp(sio, fastapi_app)
 
@@ -99,14 +108,7 @@ async def log_requests(request: Request, call_next):
             content={"detail": "Internal server error"}
         )
 
-# Configure CORS
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=settings.cors_origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+
 
 app.include_router(auth.router)
 app.include_router(test.router)
